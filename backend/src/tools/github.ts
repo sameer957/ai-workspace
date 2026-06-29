@@ -10,7 +10,7 @@ const username = process.env.GITHUB_USERNAME!;
 export const githubTool: Tool = {
   name: 'github',
   description: 'Read and manage GitHub pull requests and issues',
-  operations: ['listPullRequests', 'listIssues', 'createIssue', 'createReview'],
+  operations: ['listPullRequests', 'listIssues'],
 
   async execute(operation: string, input: Record<string, unknown> = {}): Promise<ToolResult> {
     try {
