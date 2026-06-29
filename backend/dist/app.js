@@ -55,12 +55,12 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, morgan_1.default)('combined'));
-app.use("/auth", googleAuthRoutes_1.default);
-registry_1.registry.register(gmail_1.gmailTool);
-app.use("/chat", chatRoutes_1.default);
-app.use("/action", chatRoutes_1.actionRouter);
-registry_1.registry.register(github_1.githubTool);
 registry_1.registry.register(notion_1.notionTool);
+registry_1.registry.register(github_1.githubTool);
+registry_1.registry.register(gmail_1.gmailTool);
+app.use('/auth', googleAuthRoutes_1.default);
+app.use('/chat', chatRoutes_1.default);
+app.use('/action', chatRoutes_1.actionRouter);
 app.use((_req, res) => {
     res.status(404).json({ success: false, error: 'Invalid route' });
 });

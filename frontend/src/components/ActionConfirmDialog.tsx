@@ -9,8 +9,6 @@ interface Props {
 
 const operationLabels: Record<string, string> = {
   sendEmail: 'Send Email',
-  createReview: 'Submit PR Review',
-  createTask: 'Create Notion Task',
 };
 
 export default function ActionConfirmDialog({ action, onConfirm, onCancel, loading }: Props) {

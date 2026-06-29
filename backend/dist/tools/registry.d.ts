@@ -1,4 +1,4 @@
-import { Tool } from "../utils/types";
+import { Tool } from '../utils/types';
 declare class ToolRegistry {
     private tools;
     register(tool: Tool): void;

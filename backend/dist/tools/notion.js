@@ -7,27 +7,29 @@ const notion = new client_1.Client({
 });
 const databaseId = process.env.NOTION_DATABASE_ID;
 exports.notionTool = {
-    name: "notion",
-    description: "Read and manage tasks in Notion",
-    operations: ["listTasks"],
+    name: 'notion',
+    description: 'Read and manage tasks in Notion',
+    operations: ['listTasks'],
     async execute(operation, input = {}) {
         try {
             switch (operation) {
-                case "listTasks": {
+                case 'listTasks': {
                     const response = await notion.databases.query({
                         database_id: databaseId,
-                        sorts: [{ property: "Priority", direction: "descending" }],
+                        sorts: [{ property: 'Priority', direction: 'descending' }],
                     });
                     const tasks = response.results.map((page) => ({
                         id: page.id,
-                        name: page.properties.Name?.title?.[0]?.plain_text ?? "Untitled",
-                        status: page.properties.status?.status?.name ?? page.properties.status?.select?.name ?? "Unknown",
-                        priority: page.properties.Priority?.select?.name ?? "None",
+                        name: page.properties.Name?.title?.[0]?.plain_text ?? 'Untitled',
+                        status: page.properties.status?.status?.name ??
+                            page.properties.status?.select?.name ??
+                            'Unknown',
+                        priority: page.properties.Priority?.select?.name ?? 'None',
                         url: page.url,
                     }));
                     return {
-                        toolName: "notion",
-                        operation: "listTasks",
+                        toolName: 'notion',
+                        operation: 'listTasks',
                         success: true,
                         data: { tasks },
                     };
@@ -38,7 +40,7 @@ exports.notionTool = {
         }
         catch (err) {
             return {
-                toolName: "notion",
+                toolName: 'notion',
                 operation,
                 success: false,
                 data: {},

@@ -8,7 +8,7 @@ async function execute(tools) {
         if (!registry_1.registry.isRegistered(toolName)) {
             results.push({
                 toolName,
-                operation: "unknown",
+                operation: 'unknown',
                 success: false,
                 data: {},
                 error: `Tool "${toolName}" is not registered`,
@@ -17,9 +17,9 @@ async function execute(tools) {
         }
         const tool = registry_1.registry.get(toolName);
         const defaultOperations = {
-            gmail: "listUnread",
-            github: "listPullRequests",
-            notion: "listTasks",
+            gmail: 'listUnread',
+            github: 'listPullRequests',
+            notion: 'listTasks',
         };
         const operation = defaultOperations[toolName] ?? tool.operations[0];
         const result = await tool.execute(operation);

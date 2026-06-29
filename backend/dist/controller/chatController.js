@@ -9,7 +9,7 @@ const chat = async (req, res) => {
     if (!message || !tools || !Array.isArray(tools)) {
         res.status(400).json({
             success: false,
-            message: "message and tools[] are required",
+            message: 'message and tools[] are required',
         });
         return;
     }
@@ -35,7 +35,7 @@ exports.chat = chat;
 const executeAction = async (req, res) => {
     const { tool, operation, input } = req.body;
     if (!tool || !operation) {
-        res.status(400).json({ success: false, message: "tool and operation are required" });
+        res.status(400).json({ success: false, message: 'tool and operation are required' });
         return;
     }
     if (!registry_1.registry.isRegistered(tool)) {

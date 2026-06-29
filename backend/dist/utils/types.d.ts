@@ -12,7 +12,7 @@ export interface Tools {
     messageId: number;
     success: boolean;
 }
-export type Role = "USER" | "ASSISTANT";
+export type Role = 'USER' | 'ASSISTANT';
 export interface Tool {
     name: string;
     description: string;
